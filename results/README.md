@@ -14,7 +14,6 @@ The functional verification confirms that both architectures produce identical m
 
 The interleaved architecture maintains in-order stream commitment while improving PE utilization and reducing the completion latency of the final stream.
 
-![Functional Verification and Scaling Results](verification_and_scaling.png)
 
 ### Functional Verification Results
 
