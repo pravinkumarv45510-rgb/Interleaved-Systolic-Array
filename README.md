@@ -22,10 +22,10 @@ The design consists of:
 
 | Parameter         |   Value |
 | ----------------- | ------: |
-| Array size        | 32 × 32 |
-| Data width        | 16 bits |
+| Array size        |  4 × 4  |
+| Data width        |  4 bits |
 | Accumulator width | 48 bits |
-| Number of streams |       8 |
+| Number of streams |       2 |
 | Maximum K         |     255 |
 | Target K          |      64 |
 | Token width       | 28 bits |
@@ -43,15 +43,9 @@ rtl/
 └── interleaved_systolic_top.v
 
 tb/
-├── tb_comparison_32x32.v
+├── tb_comparison.v
 └── tb_random_matmul.v
 
-results/
-├── sim_compare.out
-└── sim_random.out
-
-docs/
-└── architecture.md
 ```
 
 ## Design Overview
@@ -137,9 +131,9 @@ The testbench generates random matrices and compares the hardware results agains
 The current random verification configuration uses:
 
 ```text
-N       = 16
-K       = 8
-STREAMS = 8
+N       = 4
+K       = 4
+STREAMS = 2
 RUNS    = 4
 SEED    = 42
 ```
@@ -149,10 +143,8 @@ SEED    = 42
 The project uses:
 
 * Icarus Verilog
-* VVP
-* GTKWave (optional)
 
-Install Icarus Verilog and GTKWave, then run:
+Install Icarus Verilog  then run:
 
 ```bash
 make random-verify
@@ -188,8 +180,8 @@ ACC_W
 For example:
 
 ```verilog
-N        = 32
-K        = 64
+N        = 16
+K        = 16
 STREAMS  = 8
 DATA_W   = 16
 ACC_W    = 48
